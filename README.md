@@ -1,6 +1,16 @@
 # go_postgreSQL_docker
-Dockerize golang backend api and postgreSQL db with docker compose 
+Dockerized backend app. 
 
+- Dockerized Backend API with Golang using Fiber framework
+- Dockerized PostgreSQL
+- Orchestrated by Docker-Compose
+
+
+## Domain 
+
+Trivia app. The only domain entity is `Fact`that holds a `Question`which is a string, and an `Answer`that is another string
+
+## Based on
 
 Based on this youtuve video : https://www.youtube.com/watch?v=p08c0-99SyU
 
