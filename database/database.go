@@ -5,17 +5,17 @@ import (
 	"log"
 	"os"
 
-	"github.com/divrhino/divrhino-trivia/models"
+	"github.com/nicobellanich/go_postgreSQL_docker/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
 
-type Dbinstance struct {
-	Db *gorm.DB
+type DataBase struct {
+	Instance *gorm.DB
 }
 
-var DB Dbinstance
+var DB DataBase
 
 func ConnectDb() {
 	dsn := fmt.Sprintf(
@@ -25,7 +25,7 @@ func ConnectDb() {
 		os.Getenv("DB_NAME"),
 	)
 
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+	connectedDatabase, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
 
@@ -35,12 +35,12 @@ func ConnectDb() {
 	}
 
 	log.Println("connected")
-	db.Logger = logger.Default.LogMode(logger.Info)
+	connectedDatabase.Logger = logger.Default.LogMode(logger.Info)
 
 	log.Println("running migrations")
-	db.AutoMigrate(&models.Fact{})
+	connectedDatabase.AutoMigrate(&models.Fact{})
 
-	DB = Dbinstance{
-		Db: db,
+	DB = DataBase{
+		Instance: connectedDatabase,
 	}
 }

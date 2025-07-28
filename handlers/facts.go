@@ -1,14 +1,14 @@
 package handlers
 
 import (
-	"github.com/divrhino/divrhino-trivia/database"
-	"github.com/divrhino/divrhino-trivia/models"
 	"github.com/gofiber/fiber/v2"
+	"github.com/nicobellanich/go_postgreSQL_docker/database"
+	"github.com/nicobellanich/go_postgreSQL_docker/models"
 )
 
 func ListFacts(c *fiber.Ctx) error {
 	facts := []models.Fact{}
-	database.DB.Db.Find(&facts)
+	database.DB.Instance.Find(&facts)
 
 	return c.Status(200).JSON(facts)
 }
@@ -21,7 +21,7 @@ func CreateFact(c *fiber.Ctx) error {
 		})
 	}
 
-	database.DB.Db.Create(&fact)
+	database.DB.Instance.Create(&fact)
 
 	return c.Status(200).JSON(fact)
 }

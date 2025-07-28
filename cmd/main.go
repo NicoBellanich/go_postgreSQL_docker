@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/divrhino/divrhino-trivia/database"
 	"github.com/gofiber/fiber/v2"
+	"github.com/nicobellanich/go_postgreSQL_docker/database"
 )
 
 func main() {
