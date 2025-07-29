@@ -5,8 +5,12 @@ Dockerized backend app.
 - Dockerized PostgreSQL
 - Orchestrated by Docker-Compose
 
+## Extra libraries
 
-## Domain 
+- [air library](https://github.com/air-verse/air) : Live reload for Go apps
+
+
+## Domain implemented
 
 Trivia app. The only domain entity is `Fact`that holds a `Question`which is a string, and an `Answer`that is another string
 
